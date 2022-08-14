@@ -11,8 +11,6 @@ public class GridCell : MonoBehaviour
 
     public void SetAvailable(bool available)
     {
-        SetVisible(true);
-
         if (available)
         {
             _meshRenderer.material.color = _available;

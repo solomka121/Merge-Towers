@@ -476,6 +476,9 @@ MonoBehaviour:
   gridSize: {x: 5, y: 3}
   _gridCellsParent: {fileID: 1525369438}
   _gridCellPrefab: {fileID: 4909354780545065824, guid: fa26deb405ce4da46943f49b5b818fc2, type: 3}
+  _turrets:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &685326791
 GameObject:
   m_ObjectHideFlags: 0

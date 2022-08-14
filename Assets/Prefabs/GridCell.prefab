@@ -131,3 +131,4 @@ MonoBehaviour:
   _meshRenderer: {fileID: 4909354779445435192}
   _available: {r: 0, g: 1, b: 0, a: 0.39215687}
   _notAvailable: {r: 1, g: 0, b: 0, a: 0.39215687}
+  _selected: {r: 0, g: 1, b: 1, a: 0.39215687}

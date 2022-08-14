@@ -4,6 +4,7 @@ public class Building : MonoBehaviour
 {
     public Vector2Int size = Vector2Int.one;
     public GridCell currentCell;
+    public Turret turret;
     private bool _canScale = true;
     private int _selectedAnimationID;
 

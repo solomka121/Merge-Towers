@@ -131,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 3209538693859555113}
+  _selected: {r: 0, g: 1, b: 1, a: 0.39215687}
+  _aimedAlpha: 210
+  _merge: {r: 1, g: 0.92156863, b: 0.015686275, a: 0.39215687}
   _available: {r: 0, g: 1, b: 0, a: 0.39215687}
   _notAvailable: {r: 1, g: 0, b: 0, a: 0.39215687}
-  _selected: {r: 0, g: 1, b: 1, a: 0.39215687}
-  _aimed: {r: 0.17626214, g: 1, b: 0, a: 0.78431374}
 --- !u!1 &5718124196133637506
 GameObject:
   m_ObjectHideFlags: 0

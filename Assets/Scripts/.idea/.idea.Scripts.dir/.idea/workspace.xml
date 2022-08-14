@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="23e08a19-186f-447c-a827-372045c276dc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/TurretBorder.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/TurretBorder.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/TurretPlace.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/TurretPlace.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_1.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_2.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_3.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_4.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_4.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_5.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_5.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_6.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_6.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_7.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_7.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_8.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_8.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_9.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Addons/3D Lowpoly Turret/Models/Turrets_9.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prefabs/Turret 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Prefabs/Turret 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prefabs/Turret 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Prefabs/Turret 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Building.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2DMWiwI9rr2fYCfSIoNLOEKlFfW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23e08a19-186f-447c-a827-372045c276dc" name="Default Changelist" comment="" />
+      <created>1660509571285</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660509571285</updated>
+      <workItem from="1660509575789" duration="26000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

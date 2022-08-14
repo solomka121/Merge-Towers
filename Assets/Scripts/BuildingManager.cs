@@ -88,6 +88,7 @@ public class BuildingManager : MonoBehaviour
                 gridCell.SetVisible(true);
             }
         }
+
         ShowMergebleBuldings(building);
     }
 
@@ -97,8 +98,6 @@ public class BuildingManager : MonoBehaviour
         for (int i = 0; i < _buildings.Count; i++)
         {
             Building buildingOnGrid = _buildings[i];
-            Debug.Log(i);
-            Debug.Log(buildingOnGrid.currentCell);
             if (buildingOnGrid.turret.level == neededLevel)
             {
                 _buildings[i].currentCell.SetMergeble(true);
@@ -208,7 +207,7 @@ public class BuildingManager : MonoBehaviour
                     return;
                 }
 
-                if (IsCellEmpty(targetCell)) // Placing on new cell
+                if (IsCellEmpty(targetCell)) // Placing on new empty cell
                 {
                     _selectedBuilding.currentCell.SetAvailable(true);
                     DeleteBuildingOnGrid(oldCell);

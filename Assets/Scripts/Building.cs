@@ -5,6 +5,7 @@ public class Building : MonoBehaviour
     public Vector2Int size = Vector2Int.one;
     public GridCell currentCell;
     public Turret turret;
+    [SerializeField] private Outline _outline;
     private bool _canScale = true;
     private int _selectedAnimationID;
 
@@ -43,6 +44,7 @@ public class Building : MonoBehaviour
     public void SetSelected(bool selected)
     {
         currentCell.SetSelected(selected);
+        _outline.enabled = selected;
 
         if (selected)
         {
@@ -57,7 +59,7 @@ public class Building : MonoBehaviour
     public void SelectedScale()
     {
         Debug.Log("start scale");
-        _selectedAnimationID = LeanTween.scale(gameObject, Vector3.one * 1.2f , 0.6f).setEaseOutBack().setLoopPingPong().id;
+        _selectedAnimationID = LeanTween.scale(gameObject, Vector3.one * 1.2f , 0.6f).setEaseInOutCubic().setLoopPingPong().id;
     }
 
     public void CancelSelectedScale()

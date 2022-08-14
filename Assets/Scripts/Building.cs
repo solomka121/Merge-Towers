@@ -41,6 +41,8 @@ public class Building : MonoBehaviour
 
     public void SetSelected(bool selected)
     {
+        currentCell.SetSelected(selected);
+
         if (selected)
         {
             SelectedScale();

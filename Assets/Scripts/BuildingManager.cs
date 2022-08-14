@@ -179,13 +179,8 @@ public class BuildingManager : MonoBehaviour
         // Highlight the cell below the buillding
         _gridCells[_aimedCell.x, _aimedCell.y].SetAimed(false);
         _aimedCell = GetCellIndex(_selectedBuilding.transform.position);
-        if (IsCellEmpty(_aimedCell))
-        {
-            _gridCells[_aimedCell.x, _aimedCell.y].SetAimed(true);
-        }
+        _gridCells[_aimedCell.x, _aimedCell.y].SetAimed(true);
         //
-
-        _selectedBuilding.currentCell.SetSelected(true);
 
         // Moving the building
         var groundPlane = new Plane(Vector3.up, Vector3.zero);

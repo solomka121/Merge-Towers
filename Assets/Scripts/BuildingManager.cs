@@ -16,6 +16,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask _turrets;
     private Camera _camera;
     private Building _selectedBuilding;
+    private Vector2Int _aimedCell;
 
     private void Awake()
     {
@@ -65,7 +66,14 @@ public class BuildingManager : MonoBehaviour
 
     public void ShowCells()
     {
-
+        for (int x = 0; x < gridSize.x; x++)
+        {
+            for (int y = 0; y < gridSize.y; y++)
+            {
+                GridCell gridCell = _gridCells[x, y];
+                gridCell.SetVisible(true);
+            }
+        }
     }
 
     public void SpawnBuilding(Building building)
@@ -89,6 +97,7 @@ public class BuildingManager : MonoBehaviour
         building.currentCell.SetAvailable(false);
 
         building.transform.position = transform.position + new Vector3(position.x , transform.position.y, position.y);
+        building.PlaceBumpScale();
     }
 
     public Vector2Int GetRandomCellCoordinates()
@@ -99,7 +108,6 @@ public class BuildingManager : MonoBehaviour
 
     public bool IsCellEmpty(Vector2Int cell)
     {
-        Debug.Log(cell);
         return _grid[cell.x, cell.y] == null;
     }
 
@@ -115,6 +123,7 @@ public class BuildingManager : MonoBehaviour
     public void DeleteBuildingOnGrid(Vector2Int index)
     {
         _grid[index.x, index.y] = null;
+        _emptyCells.Add(index);
     }
 
     public bool IsThereEmptySpace()
@@ -126,12 +135,15 @@ public class BuildingManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(_selectedBuilding != null)
+            if(_selectedBuilding != null) // Try to place if holds building
             {
-                Vector2Int oldCell = GetCellIndex(_selectedBuilding.currentCell.transform.position);
-                Vector2Int aimedCell = GetCellIndex(_selectedBuilding.transform.position);
+                HideCells(); 
+                _selectedBuilding.SetSelected(false);
 
-                if(oldCell == aimedCell) // If trying to place on the same cell where were placed
+                Vector2Int oldCell = GetCellIndex(_selectedBuilding.currentCell.transform.position);
+                Vector2Int targetCell = GetCellIndex(_selectedBuilding.transform.position);
+
+                if(oldCell == targetCell) // Trying to place on the same cell where were placed
                 {
                     _selectedBuilding.currentCell.SetAvailable(true);
                     PlaceBuilding(_selectedBuilding, oldCell);
@@ -139,29 +151,43 @@ public class BuildingManager : MonoBehaviour
                     return;
                 }
 
-                if (IsCellEmpty(aimedCell)) // Placing on new cell
+                if (IsCellEmpty(targetCell)) // Placing on new cell
                 {
                     _selectedBuilding.currentCell.SetAvailable(true);
                     DeleteBuildingOnGrid(oldCell);
-                    PlaceBuilding(_selectedBuilding, aimedCell);
+                    PlaceBuilding(_selectedBuilding, targetCell);
                     _selectedBuilding = null;
                 }
                 return;
             }
 
-            Ray inputRay = _camera.ScreenPointToRay(Input.mousePosition);
+            // Choose building on grid
+            Ray inputRay = _camera.ScreenPointToRay(Input.mousePosition); 
             RaycastHit hit;
-            if (Physics.Raycast(inputRay , out hit , 20 , _turrets)){
-                Debug.Log("Hittet Turret");
+            if (Physics.Raycast(inputRay , out hit , 20 , _turrets)){  
                 _selectedBuilding = hit.collider.GetComponent<Building>();
+                _selectedBuilding.SetSelected(true);
             }
+            //
         }
 
         if (_selectedBuilding == null)
             return;
 
+        ShowCells();
+
+        // Highlight the cell below the buillding
+        _gridCells[_aimedCell.x, _aimedCell.y].SetAimed(false);
+        _aimedCell = GetCellIndex(_selectedBuilding.transform.position);
+        if (IsCellEmpty(_aimedCell))
+        {
+            _gridCells[_aimedCell.x, _aimedCell.y].SetAimed(true);
+        }
+        //
+
         _selectedBuilding.currentCell.SetSelected(true);
 
+        // Moving the building
         var groundPlane = new Plane(Vector3.up, Vector3.zero);
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         if(groundPlane.Raycast(ray , out float position))
@@ -171,5 +197,6 @@ public class BuildingManager : MonoBehaviour
             float clampedZ = Mathf.Clamp(worldPosition.z , transform.position.z, transform.position.z + gridSize.y - _selectedBuilding.size.y);
             _selectedBuilding.transform.position = new Vector3(clampedX, transform.position.y, clampedZ);
         }
+        //
     }
 }

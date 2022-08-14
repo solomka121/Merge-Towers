@@ -6,11 +6,15 @@ public class GridCell : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private Color _available = Color.green;
+    private bool _isAvailable;
     [SerializeField] private Color _notAvailable = Color.red;
     [SerializeField] private Color _selected = Color.cyan;
+    [SerializeField] private Color _aimed = Color.green;
 
     public void SetAvailable(bool available)
     {
+        _isAvailable = available;
+
         if (available)
         {
             _meshRenderer.material.color = _available;
@@ -30,6 +34,18 @@ public class GridCell : MonoBehaviour
         else
         {
             SetVisible(false);
+        }
+    }
+
+    public void SetAimed(bool aimed)
+    {
+        if (aimed)
+        {
+            _meshRenderer.material.color = _aimed;
+        }
+        else
+        {
+            SetAvailable(_isAvailable);
         }
     }
 

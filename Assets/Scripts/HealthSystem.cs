@@ -28,7 +28,7 @@ public class HealthSystem : MonoBehaviour
         OnHealthChange?.Invoke();
     }
 
-    public void ResetHealth()
+    public void ResetHealth() 
     {
         currentHealth = _maxHealth;
         OnHealthChange?.Invoke();

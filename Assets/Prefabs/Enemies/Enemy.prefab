@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fdfdcc4a367e340acff6f297647d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.4
+  _speed: 1
   _animator: {fileID: 5400262013376253518}
   health: {fileID: 920200877517415279}
   direction: {x: -0, y: -0, z: -1}

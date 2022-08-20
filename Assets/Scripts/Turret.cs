@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour
 {
     [field:SerializeField] public int level { get; private set; }
     [field: SerializeField] public int damage { get; private set; } = 1;
+    [field: SerializeField] public float bulletSpeed { get; private set; } = 1;
     [field: SerializeField] public float fireRate { get; private set; } = 1;
 
     private float _shootCooldown;
@@ -13,6 +14,7 @@ public class Turret : MonoBehaviour
 
     [SerializeField] private Transform _turretTopPart;
     [SerializeField] private Transform _barrelShootPoint;
+    [SerializeField] private Bullet _bullet;
     private EnemySpawner _enemySpawner;
 
     private void Awake()
@@ -40,8 +42,8 @@ public class Turret : MonoBehaviour
         Vector3 lookDirection;
         if (enemy != null) 
         {
-            lookDirection = enemy.transform.position - _turretTopPart.transform.position;
-            lookDirection.y = _turretTopPart.transform.position.y;
+            lookDirection = enemy.transform.position - _turretTopPart.position;
+            lookDirection.y = 0;
         }
         else
         {
@@ -49,7 +51,9 @@ public class Turret : MonoBehaviour
         }
 
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-        _turretTopPart.rotation = lookRotation;
+        Quaternion smoothedLookRotation = Quaternion.Slerp(_turretTopPart.rotation, lookRotation, 0.15f);
+
+        _turretTopPart.rotation = smoothedLookRotation;
     }
 
     protected void Shoot()
@@ -58,7 +62,9 @@ public class Turret : MonoBehaviour
 
         if(timeElapsed >= _shootCooldown)
         {
-            
+            Bullet bullet = Instantiate(_bullet, _barrelShootPoint.position , _barrelShootPoint.rotation);
+            bullet.Init(damage);
+            bullet.Launch(bulletSpeed);
             _lastShootTimeSeconds = Time.time;
         }
     }

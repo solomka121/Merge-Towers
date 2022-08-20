@@ -656,7 +656,7 @@ MonoBehaviour:
   _enemy: {fileID: 5400262013376253521, guid: c38e1b9fe24970642bb89a4ceeb5c709, type: 3}
   _enemiesParent: {fileID: 1782344433}
   _xSpawnRange: 2
-  _spawnTime: 0.8
+  _spawnTime: 0.1
   <activeEnemies>k__BackingField: []
 --- !u!1 &840540458
 GameObject:

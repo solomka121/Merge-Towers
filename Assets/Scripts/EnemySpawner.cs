@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     private ObjectPool<Enemy> _enemyPool;
     private ObjectPool<ParticleSystem> _dieParticles;
 
+    private int count = 0;
+
     void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
@@ -25,8 +27,9 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         _timeToSpawn -= Time.deltaTime;
-        if(_timeToSpawn <= 0)
+        if(_timeToSpawn <= 0 && count < 100)
         {
+            count++;
             SpawnEnemy();
             _timeToSpawn = _spawnTime;
         }
@@ -65,12 +68,29 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.localPosition += spawnPosition;
     }
 
-    public Enemy GetFirstEnemy()
+    public Enemy GetClosestEnemy(Vector3 startPosition , int range)
     {
         if(activeEnemies.Count == 0)
             return null;
 
-        return activeEnemies[0];
+        Enemy closestEnemy = null;
+        float closestDistanceSqr = range * range;
+
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            Vector3 enemyPosition = activeEnemies[i].transform.position;
+            Vector3 currentDirection = enemyPosition - startPosition;
+            float currentDistance = currentDirection.sqrMagnitude;
+
+            if (currentDistance < closestDistanceSqr)
+            {
+                closestEnemy = activeEnemies[i];
+                closestDistanceSqr = currentDistance;
+            }
+        }
+
+        return closestEnemy;
+
     }
 
 }

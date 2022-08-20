@@ -15,8 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private ObjectPool<Enemy> _enemyPool;
     private ObjectPool<ParticleSystem> _dieParticles;
 
-    private int count = 0;
-
     void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
@@ -27,9 +25,8 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         _timeToSpawn -= Time.deltaTime;
-        if(_timeToSpawn <= 0 && count < 100)
+        if(_timeToSpawn <= 0)
         {
-            count++;
             SpawnEnemy();
             _timeToSpawn = _spawnTime;
         }

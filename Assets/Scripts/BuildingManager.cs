@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 using System.Collections.Generic;
 
 public class BuildingManager : MonoBehaviour
@@ -18,8 +19,10 @@ public class BuildingManager : MonoBehaviour
     private Building _selectedBuilding;
     private Vector2Int _aimedCell;
 
-    [SerializeField] private TurretsLevels _turretsLevels;
+    [SerializeField] private TurretLevels _turretLevels;
     [SerializeField] private EnemySpawner _enemySpawner;
+
+    [SerializeField] private TurretBulletsPool _turretBulletsPool;
 
     private void Awake()
     {
@@ -117,6 +120,7 @@ public class BuildingManager : MonoBehaviour
 
         Building spawnedBuilding = Instantiate(building , transform);
         spawnedBuilding.turret.SetSpawner(_enemySpawner);
+        spawnedBuilding.turret.SetPool(_turretBulletsPool);
 
         Vector2Int position = GetRandomCellCoordinates();
         PlaceBuilding(spawnedBuilding , position);
@@ -231,7 +235,7 @@ public class BuildingManager : MonoBehaviour
                         DeleteBuildingOnGrid(targetCell);
                         Destroy(targetedBuilding.gameObject);
 
-                        SpawnBuilding(_turretsLevels.GetTurretLevel(neededLevel + 1) , targetCell);
+                        SpawnBuilding(_turretLevels.GetTurretLevel(neededLevel + 1) , targetCell);
 
                         _selectedBuilding = null;
                         return;

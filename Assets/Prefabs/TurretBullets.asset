@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73144c231e22f1341bbc2d9db9c25a11, type: 3}
+  m_Name: TurretBullets
+  m_EditorClassIdentifier: 
+  bullets:
+  - {fileID: 6683041572728776187, guid: 2185058ed208554499009c3d086a439f, type: 3}
+  - {fileID: 6683041572728776187, guid: a6cccd3c93f50974194d13a4c0d5d913, type: 3}

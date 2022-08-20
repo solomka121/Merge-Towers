@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Turrets/TurretsLevel")]
-public class TurretsLevels : ScriptableObject
+[CreateAssetMenu(menuName = "Turrets/TurretLevels")]
+public class TurretLevels : ScriptableObject
 {
     public int maxLevel;
     public Building[] buildings;

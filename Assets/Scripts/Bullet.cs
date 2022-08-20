@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class Bullet : MonoBehaviour
     private int _damage;
     private float _speed;
 
+    private TurretBulletsPool _pool;
 
-    public void Init(int damage)
+    public void SetPool(TurretBulletsPool pool) => _pool = pool;
+
+    public void Init(int damage , Transform barrel)
     {
-        _damage = damage;  
+        _damage = damage;
+        transform.position = barrel.position;
+        transform.rotation = barrel.rotation;
     }
 
     public void Launch(float speed)
@@ -27,7 +33,14 @@ public class Bullet : MonoBehaviour
         if(other.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.health.Damage(_damage);
-            Destroy(gameObject);
+            _pool.ReturnBulletToPool(this);
         }
+    }
+
+    public void ResetInstance()
+    {
+        _rigidBody.velocity = Vector3.zero;
+        _damage = 0;
+        _speed = 0;
     }
 }

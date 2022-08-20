@@ -332,10 +332,10 @@ MonoBehaviour:
   <damage>k__BackingField: 10
   <bulletSpeed>k__BackingField: 15
   <fireRate>k__BackingField: 1
-  <Range>k__BackingField: 15
+  <Range>k__BackingField: 20
   _turretTopPart: {fileID: 5679429557080632542}
   _barrelShootPoint: {fileID: 1892334300785354150}
-  _bullet: {fileID: 6683041572728776187, guid: 2185058ed208554499009c3d086a439f, type: 3}
+  _bulletsPool: {fileID: 0}
 --- !u!65 &221372837824335401
 BoxCollider:
   m_ObjectHideFlags: 0

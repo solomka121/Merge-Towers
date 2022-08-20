@@ -15,7 +15,7 @@ public class Turret : MonoBehaviour
 
     [SerializeField] private Transform _turretTopPart;
     [SerializeField] private Transform _barrelShootPoint;
-    [SerializeField] private Bullet _bullet;
+    [SerializeField] private TurretBulletsPool _bulletsPool;
     private EnemySpawner _enemySpawner;
 
     private void Awake()
@@ -25,10 +25,9 @@ public class Turret : MonoBehaviour
         fireRate *= level;
     }
 
-    public void SetSpawner(EnemySpawner spawner)
-    {
-        _enemySpawner = spawner;
-    }
+    public void SetPool(TurretBulletsPool pool) => _bulletsPool = pool;
+
+    public void SetSpawner(EnemySpawner spawner) => _enemySpawner = spawner;
 
     public void FixedUpdate()
     {
@@ -72,8 +71,8 @@ public class Turret : MonoBehaviour
 
         if(timeElapsed >= _shootCooldown)
         {
-            Bullet bullet = Instantiate(_bullet, _barrelShootPoint.position , _barrelShootPoint.rotation);
-            bullet.Init(damage);
+            Bullet bullet = _bulletsPool.GetBullet(level);
+            bullet.Init(damage , _barrelShootPoint);
             bullet.Launch(bulletSpeed);
             _lastShootTimeSeconds = Time.time;
         }

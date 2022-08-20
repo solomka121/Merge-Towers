@@ -244,9 +244,9 @@ GameObject:
   - component: {fileID: 8233484851888101292}
   - component: {fileID: -9131076936444105177}
   - component: {fileID: 221372837824335401}
-  - component: {fileID: 3172712598309965857}
+  - component: {fileID: 7907914371235917637}
   m_Layer: 12
-  m_Name: Turret 5
+  m_Name: Turret 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   currentCell: {fileID: 0}
   turret: {fileID: -9131076936444105177}
-  _outline: {fileID: 3172712598309965857}
+  _outline: {fileID: 7907914371235917637}
 --- !u!114 &-9131076936444105177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d913ce26e6838ab4385da2cf85357a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <level>k__BackingField: 5
+  <level>k__BackingField: 3
+  <damage>k__BackingField: 1
+  <fireRate>k__BackingField: 1
 --- !u!65 &221372837824335401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,7 +313,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: 0, y: 0.3, z: 0}
---- !u!114 &3172712598309965857
+--- !u!114 &7907914371235917637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,7 +392,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bdd4113c1324d434c9bd3dcd64cbd2f1, type: 2}
+  - {fileID: 2100000, guid: 946948d087a60b941b224ab4142c5ea8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -505,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469435417697494189, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_text
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3717136242369218136, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_Name

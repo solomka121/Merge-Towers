@@ -19,6 +19,7 @@ public class BuildingManager : MonoBehaviour
     private Vector2Int _aimedCell;
 
     [SerializeField] private TurretsLevels _turretsLevels;
+    [SerializeField] private EnemySpawner _enemySpawner;
 
     private void Awake()
     {
@@ -115,6 +116,7 @@ public class BuildingManager : MonoBehaviour
             return;
 
         Building spawnedBuilding = Instantiate(building , transform);
+        spawnedBuilding.turret.SetSpawner(_enemySpawner);
 
         Vector2Int position = GetRandomCellCoordinates();
         PlaceBuilding(spawnedBuilding , position);
@@ -126,6 +128,7 @@ public class BuildingManager : MonoBehaviour
             return;
 
         Building spawnedBuilding = Instantiate(building, transform);
+        spawnedBuilding.turret.SetSpawner(_enemySpawner);
 
         PlaceBuilding(spawnedBuilding, position);
     }
@@ -201,7 +204,7 @@ public class BuildingManager : MonoBehaviour
                 if(oldCell == targetCell) // Trying to place on the same cell where were placed
                 {
                     _selectedBuilding.currentCell.SetAvailable(true);
-                    PlaceBuilding(_selectedBuilding, oldCell);
+                    ReplaceBuildingBack(_selectedBuilding);
                     _selectedBuilding = null;
 
                     return;

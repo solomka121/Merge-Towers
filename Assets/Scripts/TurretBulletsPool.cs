@@ -27,12 +27,9 @@ public class TurretBulletsPool : MonoBehaviour
 
     public Bullet GetBullet(int level)
     {
-        if (_bullets[level - 1].TryDequeue(out Bullet bullet) == false)
-        {
-            CreateBullet(level);
-            bullet = _bullets[level - 1].Dequeue();
-        }
-        TakeBulletFromPool(bullet);
+        Bullet bullet = GetBulletFromPool(level);
+
+        bullet.gameObject.SetActive(true);
         return bullet;
     }
 
@@ -49,9 +46,19 @@ public class TurretBulletsPool : MonoBehaviour
         return currentBullet;
     }
 
-    private void TakeBulletFromPool(Bullet bullet)
+    public Bullet GetBulletFromPool(int level)
     {
-        bullet.gameObject.SetActive(true);
+        Bullet bullet;
+
+        if (_bullets[level - 1].TryDequeue(out bullet))
+        {
+            return bullet;
+        }
+
+        CreateBullet(level);
+        bullet = _bullets[level - 1].Dequeue();
+
+        return bullet;
     }
 
     public void ReturnBulletToPool(Bullet bullet)
@@ -59,6 +66,8 @@ public class TurretBulletsPool : MonoBehaviour
         bullet.ResetInstance();
         bullet.gameObject.SetActive(false);
         bullet.transform.localPosition = Vector3.zero;
+
+        _bullets[bullet.level - 1].Enqueue(bullet);
     }
 
 }

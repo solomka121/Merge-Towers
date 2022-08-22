@@ -20,9 +20,10 @@ public class EnemySpawner : MonoBehaviour
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
         _timeToSpawn = _spawnTime;
         activeEnemies = new List<Enemy>();
+        SpawnEnemy();
     }
 
-    private void Update()
+/*    private void Update()
     {
         _timeToSpawn -= Time.deltaTime;
         if(_timeToSpawn <= 0)
@@ -30,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             _timeToSpawn = _spawnTime;
         }
-    }
+    }*/
 
     private Enemy CreateEnemy()
     {

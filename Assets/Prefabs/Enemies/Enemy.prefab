@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fdfdcc4a367e340acff6f297647d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 0
   _animator: {fileID: 5400262013376253518}
   health: {fileID: 920200877517415279}
   direction: {x: -0, y: -0, z: -1}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371514bede561df46a432fa018130a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 100000
   <currentHealth>k__BackingField: 0
 --- !u!136 &930107257729511215
 CapsuleCollider:

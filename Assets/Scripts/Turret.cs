@@ -72,7 +72,7 @@ public class Turret : MonoBehaviour
         if(timeElapsed >= _shootCooldown)
         {
             Bullet bullet = _bulletsPool.GetBullet(level);
-            bullet.Init(damage , _barrelShootPoint);
+            bullet.Init(level , damage , _barrelShootPoint);
             bullet.Launch(bulletSpeed);
             _lastShootTimeSeconds = Time.time;
         }

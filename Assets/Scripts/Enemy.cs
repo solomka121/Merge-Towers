@@ -11,8 +11,13 @@ public class Enemy : MonoBehaviour
     public Vector3 direction = -Vector3.forward;
 
     private ObjectPool<Enemy> _pool;
+    private ParticlesPool _dieEffectsPool;
 
-    public void SetPool(ObjectPool<Enemy> pool) => _pool = pool;
+    public void SetPool(ObjectPool<Enemy> enemyPool, ParticlesPool dieEffectPool)
+    {
+        _pool = enemyPool;
+        _dieEffectsPool = dieEffectPool;
+    }
 
     private void Start()
     {
@@ -39,6 +44,8 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        _dieEffectsPool.ActivateParticle(transform.position + new Vector3(0 , 0.5f , 0));
+
         health.ResetHealth();
         _pool.Release(this);
     }

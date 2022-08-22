@@ -332,7 +332,7 @@ MonoBehaviour:
   <damage>k__BackingField: 10
   <bulletSpeed>k__BackingField: 15
   <fireRate>k__BackingField: 1
-  <Range>k__BackingField: 20
+  <Range>k__BackingField: 16
   _turretTopPart: {fileID: 5679429557080632542}
   _barrelShootPoint: {fileID: 1892334300785354150}
   _bulletsPool: {fileID: 0}

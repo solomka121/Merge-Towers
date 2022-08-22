@@ -9,34 +9,34 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _enemiesParent;
     [SerializeField] private float _xSpawnRange;
     [SerializeField] private float _spawnTime;
-    [field:SerializeField] public List<Enemy> activeEnemies { get; private set; }
-    private float _timeToSpawn;
 
     private ObjectPool<Enemy> _enemyPool;
-    private ObjectPool<ParticleSystem> _dieParticles;
+    [SerializeField] private ParticlesPool _dieParticlesPool;
+
+    [field:SerializeField] public List<Enemy> activeEnemies { get; private set; }
+    private float _timeToSpawn;
 
     void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
         _timeToSpawn = _spawnTime;
         activeEnemies = new List<Enemy>();
-        SpawnEnemy();
     }
 
-/*    private void Update()
+    private void Update()
     {
         _timeToSpawn -= Time.deltaTime;
-        if(_timeToSpawn <= 0)
+        if (_timeToSpawn <= 0)
         {
             SpawnEnemy();
             _timeToSpawn = _spawnTime;
         }
-    }*/
+    }
 
     private Enemy CreateEnemy()
     {
         Enemy enemy = Instantiate(_enemy, _enemiesParent);
-        enemy.SetPool(_enemyPool);
+        enemy.SetPool(_enemyPool , _dieParticlesPool);
         return enemy;
     }
 

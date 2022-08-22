@@ -8,16 +8,16 @@ public class TurretBulletsPool : MonoBehaviour
     [SerializeField] private Transform bulletsParent;
     private Transform[] bulletsLevelParent;
     [SerializeField] private TurretBullets _turretBullets;
-    private Dictionary<int, Queue<Bullet>> _bullets;
+    private Dictionary<int, Queue<Bullet>> _bulletsPool;
 
     private void Awake()
     {
-        _bullets = new Dictionary<int, Queue<Bullet>>();
+        _bulletsPool = new Dictionary<int, Queue<Bullet>>();
         bulletsLevelParent = new Transform[_turretBullets.bullets.Length];
 
         for (int i = 0; i < _turretBullets.bullets.Length; i++)
         {
-            _bullets.Add(i, new Queue<Bullet>());
+            _bulletsPool.Add(i, new Queue<Bullet>());
 
             GameObject levelParent = new GameObject(($"Level {i + 1}"));
             levelParent.transform.parent = bulletsParent;
@@ -38,7 +38,7 @@ public class TurretBulletsPool : MonoBehaviour
         int levelIndex = level - 1;
 
         Bullet currentBullet = Instantiate(_turretBullets.bullets[levelIndex]);
-        _bullets[levelIndex].Enqueue(currentBullet);
+        _bulletsPool[levelIndex].Enqueue(currentBullet);
         currentBullet.SetPool(this);
 
         currentBullet.transform.parent = bulletsLevelParent[levelIndex];
@@ -50,13 +50,12 @@ public class TurretBulletsPool : MonoBehaviour
     {
         Bullet bullet;
 
-        if (_bullets[level - 1].TryDequeue(out bullet))
+        if (_bulletsPool[level - 1].TryPeek(out _) == false)
         {
-            return bullet;
+            CreateBullet(level);
         }
 
-        CreateBullet(level);
-        bullet = _bullets[level - 1].Dequeue();
+        bullet = _bulletsPool[level - 1].Dequeue();
 
         return bullet;
     }
@@ -67,7 +66,7 @@ public class TurretBulletsPool : MonoBehaviour
         bullet.gameObject.SetActive(false);
         bullet.transform.localPosition = Vector3.zero;
 
-        _bullets[bullet.level - 1].Enqueue(bullet);
+        _bulletsPool[bullet.level - 1].Enqueue(bullet);
     }
 
 }

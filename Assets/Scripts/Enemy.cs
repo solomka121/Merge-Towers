@@ -7,16 +7,19 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Animator _animator;
+    [SerializeField] private int _coinsReward;
     public HealthSystem health;
     public Vector3 direction = -Vector3.forward;
 
     private ObjectPool<Enemy> _pool;
     private ParticlesPool _dieEffectsPool;
+    private CoinsPool _coinsPool;
 
-    public void SetPool(ObjectPool<Enemy> enemyPool, ParticlesPool dieEffectPool)
+    public void SetPool(ObjectPool<Enemy> enemyPool, ParticlesPool dieEffectPool , CoinsPool coinsPool)
     {
         _pool = enemyPool;
         _dieEffectsPool = dieEffectPool;
+        _coinsPool = coinsPool;
     }
 
     private void Start()
@@ -28,12 +31,14 @@ public class Enemy : MonoBehaviour
     {
         _animator.SetBool("Run", true);
     }
-
+     
     public void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            Death();
+            Vector3 effectsOffset = new Vector3(0, 0.5f, 0);
+            _dieEffectsPool.ActivateParticle(transform.position + effectsOffset);
+            _coinsPool.SpawnCoins(transform.position + effectsOffset, 0.5f, _coinsReward);
         }
     }
 
@@ -44,7 +49,9 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-        _dieEffectsPool.ActivateParticle(transform.position + new Vector3(0 , 0.5f , 0));
+        Vector3 effectsOffset = new Vector3(0, 0.5f, 0);
+        _dieEffectsPool.ActivateParticle(transform.position + effectsOffset);
+        _coinsPool.SpawnCoins(transform.position + effectsOffset, 1f , _coinsReward);
 
         health.ResetHealth();
         _pool.Release(this);

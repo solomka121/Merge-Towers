@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.8
   _animator: {fileID: 5400262013376253518}
+  _coinsReward: 1
   health: {fileID: 920200877517415279}
   direction: {x: -0, y: -0, z: -1}
 --- !u!114 &920200877517415279

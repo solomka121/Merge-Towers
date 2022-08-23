@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerWallet : MonoBehaviour
 {
     [SerializeField] private TMP_Text _moneyText;
+    [field:SerializeField] public RectTransform moneyPanel { get; private set; }
     [SerializeField] private int _startMoney;
     private int moneyCount;
 
@@ -48,7 +49,8 @@ public class PlayerWallet : MonoBehaviour
 
     private void BumbMoneyText()
     {
-        // bumb effect
+        _moneyText.transform.localScale = Vector3.one;
+        LeanTween.scale(_moneyText.gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.1f).setEaseOutCubic().setLoopPingPong(1);
     }
 
     private void UpdateText()

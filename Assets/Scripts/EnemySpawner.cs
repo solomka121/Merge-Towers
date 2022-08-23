@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private ObjectPool<Enemy> _enemyPool;
     [SerializeField] private ParticlesPool _dieParticlesPool;
+    [SerializeField] private CoinsPool _coinsPool;
 
     [field:SerializeField] public List<Enemy> activeEnemies { get; private set; }
     private float _timeToSpawn;
@@ -36,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     private Enemy CreateEnemy()
     {
         Enemy enemy = Instantiate(_enemy, _enemiesParent);
-        enemy.SetPool(_enemyPool , _dieParticlesPool);
+        enemy.SetPool(_enemyPool , _dieParticlesPool , _coinsPool);
         return enemy;
     }
 

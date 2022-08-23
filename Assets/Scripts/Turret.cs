@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour
     private float _lastShootTimeSeconds;
 
     [SerializeField] private Transform _turretTopPart;
+    [SerializeField] private TurretBarrel _barrel;
     [SerializeField] private Transform _barrelShootPoint;
     [SerializeField] private TurretBulletsPool _bulletsPool;
     private EnemySpawner _enemySpawner;
@@ -58,7 +59,7 @@ public class Turret : MonoBehaviour
         }
 
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-        Quaternion smoothedLookRotation = Quaternion.Slerp(_turretTopPart.rotation, lookRotation, 0.2f);
+        Quaternion smoothedLookRotation = Quaternion.Slerp(_turretTopPart.rotation, lookRotation, 0.14f);
 
         _turretTopPart.rotation = smoothedLookRotation;
 
@@ -75,6 +76,8 @@ public class Turret : MonoBehaviour
             bullet.Init(level , damage , _barrelShootPoint);
             bullet.Launch(bulletSpeed);
             _lastShootTimeSeconds = Time.time;
+
+            _barrel.Recoil();
         }
     }
 

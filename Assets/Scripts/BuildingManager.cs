@@ -17,6 +17,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask _turrets;
     private Camera _camera;
     private Building _selectedBuilding;
+    private bool _isGrabing;
     private Vector2Int _aimedCell;
 
     [SerializeField] private TurretLevels _turretLevels;
@@ -195,17 +196,36 @@ public class BuildingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && _isGrabing == false)
         {
-            if(_selectedBuilding != null) // Try to place if holds building
+            _isGrabing = true;
+
+            // Choose building on grid
+            RaycastHit hit;
+            Ray inputRay = _camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(inputRay, out hit, 20, _turrets))
             {
-                HideCells(); 
+                _selectedBuilding = hit.collider.GetComponent<Building>();
+                _selectedBuilding.SetSelected(true);
+
+                ShowCells(_selectedBuilding);
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0) && _isGrabing)
+        {
+            _isGrabing = false;
+
+            if (_selectedBuilding != null) // Try to place if holds building
+            {
+                HideCells();
                 _selectedBuilding.SetSelected(false);
 
                 Vector2Int oldCell = GetCellIndex(_selectedBuilding.currentCell.transform.position);
                 Vector2Int targetCell = GetCellIndex(_selectedBuilding.transform.position);
-                
-                if(oldCell == targetCell) // Trying to place on the same cell where were placed
+
+                if (oldCell == targetCell) // Trying to place on the same cell where were placed
                 {
                     _selectedBuilding.currentCell.SetAvailable(true);
                     ReplaceBuildingBack(_selectedBuilding);
@@ -235,7 +255,7 @@ public class BuildingManager : MonoBehaviour
                         DeleteBuildingOnGrid(targetCell);
                         Destroy(targetedBuilding.gameObject);
 
-                        SpawnBuilding(_turretLevels.GetTurretLevel(neededLevel + 1) , targetCell);
+                        SpawnBuilding(_turretLevels.GetTurretLevel(neededLevel + 1), targetCell);
 
                         _selectedBuilding = null;
                         return;
@@ -247,17 +267,6 @@ public class BuildingManager : MonoBehaviour
                 _selectedBuilding = null;
 
                 return;
-            }
-
-            // Choose building on grid
-            RaycastHit hit;
-            Ray inputRay = _camera.ScreenPointToRay(Input.mousePosition); 
-
-            if (Physics.Raycast(inputRay , out hit , 20 , _turrets)){  
-                _selectedBuilding = hit.collider.GetComponent<Building>();
-                _selectedBuilding.SetSelected(true);
-
-                ShowCells(_selectedBuilding);
             }
         }
 
@@ -274,11 +283,11 @@ public class BuildingManager : MonoBehaviour
         var groundPlane = new Plane(Vector3.up, Vector3.zero);
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if(groundPlane.Raycast(ray , out float position))
+        if (groundPlane.Raycast(ray, out float position))
         {
             Vector3 worldPosition = ray.GetPoint(position);
-            float clampedX = Mathf.Clamp(worldPosition.x , transform.position.x, transform.position.x + gridSize.x - _selectedBuilding.size.x);
-            float clampedZ = Mathf.Clamp(worldPosition.z , transform.position.z, transform.position.z + gridSize.y - _selectedBuilding.size.y);
+            float clampedX = Mathf.Clamp(worldPosition.x, transform.position.x, transform.position.x + gridSize.x - _selectedBuilding.size.x);
+            float clampedZ = Mathf.Clamp(worldPosition.z, transform.position.z, transform.position.z + gridSize.y - _selectedBuilding.size.y);
             _selectedBuilding.transform.position = new Vector3(clampedX, transform.position.y, clampedZ);
         }
         //

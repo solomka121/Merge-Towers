@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretBarrel : MonoBehaviour
 {
+    [field:SerializeField] public Transform shootPoint { get; private set; }
     public float strenght = 0.4f;
     public float time = 0.16f;
     public void Recoil()

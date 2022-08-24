@@ -24,6 +24,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private EnemySpawner _enemySpawner;
 
     [SerializeField] private TurretBulletsPool _turretBulletsPool;
+    [SerializeField] private ParticlesPool _mergeParticlesPool;
 
     private void Awake()
     {
@@ -120,10 +121,11 @@ public class BuildingManager : MonoBehaviour
             return;
 
         Building spawnedBuilding = Instantiate(building , transform);
-        spawnedBuilding.turret.SetSpawner(_enemySpawner);
-        spawnedBuilding.turret.SetPool(_turretBulletsPool);
+        SetUpTurretBuilding(spawnedBuilding);
 
         Vector2Int position = GetRandomCellCoordinates();
+        _mergeParticlesPool.ActivateParticle(_gridCells[position.x, position.y].transform.position, spawnedBuilding.turret.mainColor);
+
         PlaceBuilding(spawnedBuilding , position);
     }
 
@@ -133,9 +135,18 @@ public class BuildingManager : MonoBehaviour
             return;
 
         Building spawnedBuilding = Instantiate(building, transform);
-        spawnedBuilding.turret.SetSpawner(_enemySpawner);
+        SetUpTurretBuilding(spawnedBuilding);
+
+        _mergeParticlesPool.ActivateParticle(_gridCells[position.x, position.y].transform.position, spawnedBuilding.turret.mainColor);
 
         PlaceBuilding(spawnedBuilding, position);
+
+    }
+
+    private void SetUpTurretBuilding(Building building)
+    {
+        building.turret.SetSpawner(_enemySpawner);
+        building.turret.SetPool(_turretBulletsPool);
     }
 
     public void PlaceBuilding(Building building , Vector2Int position)
@@ -255,7 +266,8 @@ public class BuildingManager : MonoBehaviour
                         DeleteBuildingOnGrid(targetCell);
                         Destroy(targetedBuilding.gameObject);
 
-                        SpawnBuilding(_turretLevels.GetTurretLevel(neededLevel + 1), targetCell);
+                        Building newBuilding = _turretLevels.GetTurretLevel(neededLevel + 1);
+                        SpawnBuilding(newBuilding, targetCell);
 
                         _selectedBuilding = null;
                         return;

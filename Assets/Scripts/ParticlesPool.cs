@@ -22,6 +22,18 @@ public class ParticlesPool : MonoBehaviour
         StartCoroutine(ReturnParticleToPool(particle, particle.main.duration));
     }
 
+    public void ActivateParticle(Vector3 position , Color color)
+    {
+        ParticleSystem particle = GetParticleFromPool();
+
+        particle.transform.position = position;
+        var mainParticle = particle.main;
+        mainParticle.startColor = color;
+        particle.Play();
+
+        StartCoroutine(ReturnParticleToPool(particle, particle.main.duration));
+    }
+
     private ParticleSystem CreateParticle()
     {
         ParticleSystem currentParticle = Instantiate(_prefab, transform);

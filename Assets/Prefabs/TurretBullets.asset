@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets:
   - {fileID: 6683041572728776187, guid: 2185058ed208554499009c3d086a439f, type: 3}
-  - {fileID: 6683041572728776187, guid: a6cccd3c93f50974194d13a4c0d5d913, type: 3}
+  - {fileID: 6683041572728776187, guid: 6ed0bb1516e729a46bcf20db6d60e7f6, type: 3}

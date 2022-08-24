@@ -8,14 +8,16 @@ public class Turret : MonoBehaviour
     [field: SerializeField] public int damage { get; private set; } = 1;
     [field: SerializeField] public float bulletSpeed { get; private set; } = 1;
     [field: SerializeField] public float fireRate { get; private set; } = 1;
-    [field: SerializeField] public int Range { get; private set; } = 15;
+    [field: SerializeField] public int range { get; private set; } = 15;
+
+    [field: SerializeField] public Color mainColor { get; private set; }
 
     private float _shootCooldown;
     private float _lastShootTimeSeconds;
 
     [SerializeField] private Transform _turretTopPart;
-    [SerializeField] private TurretBarrel _barrel;
-    [SerializeField] private Transform _barrelShootPoint;
+    [SerializeField] private TurretBarrel[] _barrel;
+    private int _previousShootBarrel;
     [SerializeField] private TurretBulletsPool _bulletsPool;
     private EnemySpawner _enemySpawner;
 
@@ -32,7 +34,7 @@ public class Turret : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Enemy enemy = _enemySpawner.GetClosestEnemy(transform.position, Range);
+        Enemy enemy = _enemySpawner.GetClosestEnemy(transform.position, range);
 
         Aim(enemy);
 
@@ -72,18 +74,32 @@ public class Turret : MonoBehaviour
 
         if(timeElapsed >= _shootCooldown)
         {
+            ChangeShootBarrel();
+            TurretBarrel barrel = _barrel[_previousShootBarrel];
+
             Bullet bullet = _bulletsPool.GetBullet(level);
-            bullet.Init(level , damage , _barrelShootPoint);
+            bullet.Init(level , damage , barrel.shootPoint);
             bullet.Launch(bulletSpeed);
             _lastShootTimeSeconds = Time.time;
 
-            _barrel.Recoil();
+            barrel.Recoil();
         }
+    }
+
+    private void ChangeShootBarrel()
+    {
+        if(_previousShootBarrel == _barrel.Length - 1)
+        {
+            _previousShootBarrel = 0;
+            return;
+        }
+
+        _previousShootBarrel++;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
-        Gizmos.DrawWireSphere(transform.position, Range);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

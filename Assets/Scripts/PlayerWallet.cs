@@ -9,6 +9,7 @@ public class PlayerWallet : MonoBehaviour
     [field:SerializeField] public RectTransform moneyPanel { get; private set; }
     [SerializeField] private int _startMoney;
     private int moneyCount;
+    public event System.Action<int> OnMoneyChange;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class PlayerWallet : MonoBehaviour
     {
         moneyCount += count;
 
+        OnMoneyChange?.Invoke(moneyCount);
+
         UpdateText();
         BumbMoneyText();
     }
@@ -27,6 +30,8 @@ public class PlayerWallet : MonoBehaviour
     public void MinusMoney(int count)
     {
         moneyCount -= count;
+
+        OnMoneyChange?.Invoke(moneyCount);
 
         UpdateText();
         BumbMoneyText();

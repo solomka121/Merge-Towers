@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     public void OnSpawn()
     {
         _animator.SetBool("Run", true);
+        health.OnActivate();
     }
      
     public void Update()

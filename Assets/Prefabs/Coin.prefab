@@ -303,3 +303,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinValue: {fileID: 3479630519773537670}
+  _value: 1
+  _scalePerValueModifier: 0.05

@@ -1469,12 +1469,12 @@ GameObject:
   - component: {fileID: 732401824}
   - component: {fileID: 732401823}
   m_Layer: 5
-  m_Name: Level Number (1)
+  m_Name: Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &732401822
 RectTransform:
   m_ObjectHideFlags: 0

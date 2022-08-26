@@ -23,17 +23,41 @@ public class CoinsPool : MonoBehaviour
 
     private IEnumerator CoinsQueue(Vector3 position, float range , int count)
     {
-        for (int i = 0; i < count; i++)
+        List<int> valuesList = RandomCoinsValue(count);
+
+        for (int i = 0; i < valuesList.Count; i++)
         {
-            SpawnCoin(position, range);
+            SpawnCoin(position, range , valuesList[i]);
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    public void SpawnCoin(Vector3 position , float range)
+    private List<int> RandomCoinsValue(int totalValue)
+    {
+        List<int> result = new List<int>();
+        int valueLeft = totalValue;
+
+        if (totalValue <= 1)
+        {
+            result.Add(1);
+            return result;
+        }
+
+        while (valueLeft > 0)
+        {
+            int currentValue = Random.Range(1, valueLeft + 1);
+            valueLeft -= currentValue;
+            result.Add(currentValue);
+        }
+
+        return result;
+    }
+
+    public void SpawnCoin(Vector3 position , float range , int value)
     {
         Coin coin = GetCoinFromQueue();
         coin.gameObject.SetActive(true);
+        coin.SetValue(value);
         
         Vector3 centerPosition = _mainCamera.WorldToScreenPoint(position);
         Vector3 randomOffset = new Vector3(Random.Range(-range, range), Random.Range(-range, 0), Random.Range(-range, range));

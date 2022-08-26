@@ -6,6 +6,9 @@ using TMPro;
 public class Coin : MonoBehaviour
 {
     [SerializeField] private TMP_Text _coinValue;
+    [SerializeField] private int _value = 1;
+    [SerializeField] private float _scalePerValueModifier = 0.05f;
+    private Vector2 _normalScale;
     private PlayerWallet _wallet;
     private RectTransform _rect;
     private CoinsPool _pool;
@@ -21,11 +24,25 @@ public class Coin : MonoBehaviour
         _wallet = wallet;
     }
 
+    public void SetValue(int value)
+    {
+        _value = value;
+        _coinValue.text = _value.ToString();
+
+        ScaleOnValue(value);
+    }
+
+    private void ScaleOnValue(int value)
+    {
+        _normalScale = Vector2.one + Vector2.one * (value * _scalePerValueModifier);
+        transform.localScale = _normalScale;
+    }
+
     public void Spawn(Vector2 centerPosition , Vector2 inRangePosition)
     {
         transform.localScale = Vector2.zero;
         _rect.position = centerPosition;
-        LeanTween.scale(gameObject, Vector2.one, 0.6f).setEaseOutBack();
+        LeanTween.scale(gameObject, _normalScale, 0.6f).setEaseOutBack();
         LeanTween.move(gameObject, inRangePosition, 0.7f).setEaseOutCubic().setOnComplete(FlyToMoneyPanel);
     }
 
@@ -37,7 +54,7 @@ public class Coin : MonoBehaviour
 
     private void AddMoney()
     {
-        _wallet.AddMoney(1);
+        _wallet.AddMoney(_value);
         ResetInstance();
     }
 

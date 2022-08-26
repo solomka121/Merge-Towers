@@ -23,6 +23,9 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateValue(int value)
     {
+        if (_currentValue == value)
+            return;
+
         _currentValue = value;
         UpdateBar();
         SetActive(true);

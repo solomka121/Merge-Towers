@@ -34,7 +34,7 @@ public class DifficultyManager : MonoBehaviour
         }
         if (currentLevel % _modifiers.coinsModifierIntencity == 0)
         {
-            enemiesHealth += _modifiers.coinsAddModifier;
+            enemiesCoinsDrop += _modifiers.coinsAddModifier;
         }
     }
 }

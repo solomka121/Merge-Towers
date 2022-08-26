@@ -9,9 +9,9 @@ public class DifficultyModifiers : ScriptableObject
     public int enemiesCountIntencity = 1;
 
     [Header("Enemies Spawn Rate")]
-    public int startSpawnTime = 2;
+    public float startSpawnTime = 2;
     public float spawnTimeModifier = 0.8f;
-    public int spawnTimeIntencity = 2;
+    public int spawnTimeIntencity = 3;
 
     [Header("Enemies Health")]
     public int startHealth = 20;

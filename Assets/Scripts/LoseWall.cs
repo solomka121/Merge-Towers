@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LoseWall : MonoBehaviour
 {
-    public event System.Action enemyEnterned;
+    public event System.Action onEnemyEnterned;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Enemy>(out _))
         {
-            enemyEnterned?.Invoke();
+            onEnemyEnterned?.Invoke();
         }
     }
 }

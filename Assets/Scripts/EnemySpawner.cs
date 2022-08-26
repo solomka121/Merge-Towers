@@ -14,30 +14,75 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private ParticlesPool _dieParticlesPool;
     [SerializeField] private CoinsPool _coinsPool;
 
+    public event System.Action OnStageClear;
+    private int _enemiesToSpawn;
     [field:SerializeField] public List<Enemy> activeEnemies { get; private set; }
-    private float _timeToSpawn;
+    private int _enemiesToClear;
+    /*private float _timeToSpawn;*/
+    private bool _canSpawn = true;
+
+    private DifficultyManager _difficulty;
 
     void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
-        _timeToSpawn = _spawnTime;
+        //_timeToSpawn = _spawnTime;
         activeEnemies = new List<Enemy>();
     }
 
-    private void Update()
+    public void SetDifficulty(DifficultyManager difficulty)
+    {
+        _difficulty = difficulty;
+    }
+
+    private void Start()
+    {
+        _spawnTime = _difficulty.enemiesSpawnTime;
+    }
+
+/*    private void Update()
     {
         _timeToSpawn -= Time.deltaTime;
         if (_timeToSpawn <= 0)
         {
+            if (_canSpawn == false)
+                return;
+
             SpawnEnemy();
             _timeToSpawn = _spawnTime;
         }
+    }*/
+
+    public void SpawnEnemies(int count)
+    {
+        _enemiesToSpawn = count;
+        _enemiesToClear = count;
+        StartCoroutine(SpawningEnemies());
+    }
+
+    private IEnumerator SpawningEnemies()
+    {
+        for(int i = 0; _enemiesToSpawn > 0; _enemiesToSpawn--)
+        {
+            if (_canSpawn == false)
+                yield return null;
+
+            SpawnEnemy();
+            yield return new WaitForSeconds(_spawnTime);
+        }
+    }
+
+    public void CanSpawn(bool state)
+    {
+        _canSpawn = state;
     }
 
     private Enemy CreateEnemy()
     {
         Enemy enemy = Instantiate(_enemy, _enemiesParent);
         enemy.SetPool(_enemyPool , _dieParticlesPool , _coinsPool);
+        enemy.SetDifficulty(_difficulty);
+        enemy.health.OnDie += CountKill;
         return enemy;
     }
 
@@ -92,4 +137,20 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    public void SetEnemiesDance()
+    {
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            activeEnemies[i].Dance();
+        }
+    }
+
+    public void CountKill()
+    {
+        _enemiesToClear--;
+        if(_enemiesToClear == 0)
+        {
+            OnStageClear?.Invoke();
+        }
+    }
 }

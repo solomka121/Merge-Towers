@@ -10,10 +10,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _coinsReward;
     public HealthSystem health;
     public Vector3 direction = -Vector3.forward;
+    private bool _move = true;
 
     private ObjectPool<Enemy> _pool;
     private ParticlesPool _dieEffectsPool;
     private CoinsPool _coinsPool;
+
+    private DifficultyManager _difficulty;
 
     public void SetPool(ObjectPool<Enemy> enemyPool, ParticlesPool dieEffectPool , CoinsPool coinsPool)
     {
@@ -22,14 +25,22 @@ public class Enemy : MonoBehaviour
         _coinsPool = coinsPool;
     }
 
+    public void SetDifficulty(DifficultyManager difficulty)
+    {
+        _difficulty = difficulty;
+    }
+
     private void Start()
     {
-        health.Die += Death;
+        health.OnDie += Death;
     }
 
     public void OnSpawn()
     {
+        _coinsReward = _difficulty.enemiesCoinsDrop;
+
         _animator.SetBool("Run", true);
+        health.SetmaxHealth(_difficulty.enemiesHealth);
         health.OnActivate();
     }
      
@@ -45,6 +56,9 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_move == false)
+            return;
+
         transform.position += direction * (_speed * Time.deltaTime);
     }
 
@@ -56,5 +70,11 @@ public class Enemy : MonoBehaviour
 
         health.ResetHealth();
         _pool.Release(this);
+    }
+
+    public void Dance()
+    {
+        _move = false;
+        _animator.SetBool("Run", false);
     }
 }

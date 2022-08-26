@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5400262013376253521}
   - component: {fileID: 920200877517415279}
   - component: {fileID: 930107257729511215}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 7504951076693724516}
-  _maxHealth: 100
+  _maxHealth: 20
   <currentHealth>k__BackingField: 0
 --- !u!136 &930107257729511215
 CapsuleCollider:

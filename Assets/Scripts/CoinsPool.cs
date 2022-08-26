@@ -18,9 +18,15 @@ public class CoinsPool : MonoBehaviour
 
     public void SpawnCoins(Vector3 position, float range , int count)
     {
-        for(int i = 0; i < count; i++)
+        StartCoroutine(CoinsQueue(position, range, count));
+    }
+
+    private IEnumerator CoinsQueue(Vector3 position, float range , int count)
+    {
+        for (int i = 0; i < count; i++)
         {
             SpawnCoin(position, range);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

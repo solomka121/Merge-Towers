@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <level>k__BackingField: 1
-  <damage>k__BackingField: 10
+  <damage>k__BackingField: 5
   <bulletSpeed>k__BackingField: 15
   <fireRate>k__BackingField: 1
   <range>k__BackingField: 15
@@ -353,8 +353,6 @@ MonoBehaviour:
   _turretTopPart: {fileID: 5679429557080632542}
   _barrel:
   - {fileID: 3797224313673960682}
-  _barrelShootPoint:
-  - {fileID: 0}
   _bulletsPool: {fileID: 0}
 --- !u!65 &221372837824335401
 BoxCollider:

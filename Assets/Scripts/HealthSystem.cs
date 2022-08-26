@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     [field:SerializeField] public int currentHealth { get; private set; }
 
     public event System.Action<int> OnHealthChange;
-    public event System.Action Die;
+    public event System.Action OnDie;
 
     private void Start()
     {
@@ -20,6 +20,12 @@ public class HealthSystem : MonoBehaviour
     public void OnActivate()
     {
         _healthBar.Init(_maxHealth);
+        ResetHealth();
+    }
+
+    public void SetmaxHealth(int health)
+    {
+        _maxHealth = health;
     }
 
     public void Damage(int damageAmount)
@@ -29,7 +35,7 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Die?.Invoke();
+            OnDie?.Invoke();
         }
 
         OnHealthChange?.Invoke(currentHealth);

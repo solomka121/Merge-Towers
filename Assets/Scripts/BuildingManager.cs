@@ -304,4 +304,12 @@ public class BuildingManager : MonoBehaviour
         }
         //
     }
+
+    public void DiactivateTurrets()
+    {
+        for(int i = 0; i < _buildings.Count; i++)
+        {
+            _buildings[i].turret.enabled = false;
+        }
+    }
 }

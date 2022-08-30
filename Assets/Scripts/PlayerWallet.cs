@@ -8,10 +8,10 @@ public class PlayerWallet : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [field:SerializeField] public RectTransform moneyPanel { get; private set; }
     [SerializeField] private int _startMoney;
-    private int moneyCount;
+    public int moneyCount { get; private set; }
     public event System.Action<int> OnMoneyChange;
 
-    private void Start()
+    private void Awake()
     {
         moneyCount = _startMoney;
         UpdateText();

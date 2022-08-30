@@ -55,6 +55,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies(int count)
     {
+        _spawnTime = _difficulty.enemiesSpawnTime;
+
         _enemiesToSpawn = count;
         _enemiesToClear = count;
         StartCoroutine(SpawningEnemies());

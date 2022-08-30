@@ -14,6 +14,9 @@ public class BuyTurret : MonoBehaviour
     [SerializeField] private Color _cantAffordColor = Color.red;
     private Color _defaultColor;
     [SerializeField] private int _cost;
+    [SerializeField] private int _onBuyCostIncrease = 1;
+    [SerializeField] private int _dobleCostIntencity;
+    private int _upgradeTimesToDouble;
 
     private void Awake()
     {
@@ -21,6 +24,11 @@ public class BuyTurret : MonoBehaviour
         _wallet.OnMoneyChange += CanAfford;
         _defaultColor = _costText.color;
         UpdateCostText();
+    }
+
+    private void Start()
+    {
+        CanAfford(0);
     }
 
     public void Buy()
@@ -31,7 +39,18 @@ public class BuyTurret : MonoBehaviour
         if (_wallet.Buy(_cost))
         {
             _buildingManager.SpawnBuilding(_buildingPrefab);
-            _cost++;
+
+            _upgradeTimesToDouble++;
+            if (_upgradeTimesToDouble >= _dobleCostIntencity)
+            {
+                _cost *= 2;
+                _upgradeTimesToDouble = 0;
+            }
+            else
+            {
+                _cost += _onBuyCostIncrease;
+            }
+            CanAfford(0);
 
             UpdateCostText();
         }

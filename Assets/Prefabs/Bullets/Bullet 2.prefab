@@ -77,13 +77,13 @@ TrailRenderer:
   m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.6484375
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -104,7 +104,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.7019608, g: 0.30588236, b: 0.3372549, a: 0.5882353}
+      key0: {r: 0.69803923, g: 0.47058824, b: 0.23921569, a: 0.67058825}
       key1: {r: 1, g: 0.6843251, b: 0.36320752, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -120,7 +120,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 8096
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -165,7 +165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4444415104800489724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -201,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be1089cef4af290438113103c0ef52f3, type: 2}
+  - {fileID: 2100000, guid: 5a95c58b15d52ed468b73a5f222224ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5063,7 +5063,7 @@ Transform:
   m_GameObject: {fileID: 6700728173970444351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5734303930827133372}
@@ -5098,7 +5098,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6700728173970444338
 Rigidbody:

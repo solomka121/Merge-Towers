@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets:
   - {fileID: 6683041572728776187, guid: 2185058ed208554499009c3d086a439f, type: 3}
+  - {fileID: 6683041572728776187, guid: fa372f2d4fb2bae4291263c59331f3ee, type: 3}
   - {fileID: 6683041572728776187, guid: 6ed0bb1516e729a46bcf20db6d60e7f6, type: 3}
+  - {fileID: 6683041572728776187, guid: e96711f1c127a0a4db65c6f71872100d, type: 3}
+  - {fileID: 6683041572728776187, guid: 3dfae350a083c9648b040aace8ee9dee, type: 3}
+  - {fileID: 6683041572728776187, guid: 9b5f53d7bcc51c349b9f3a20e6b3ca18, type: 3}
+  - {fileID: 6683041572728776187, guid: c138b8b22bf1ec54d98885b7b721ba39, type: 3}
+  - {fileID: 6683041572728776187, guid: 4b638bd7e273b6c4fafb9824cca364d4, type: 3}
+  - {fileID: 6683041572728776187, guid: c670aa467651e224a95938a19e240f51, type: 3}
+  - {fileID: 6683041572728776187, guid: c3cd8ccbc69859f4d94553800ec3afa2, type: 3}

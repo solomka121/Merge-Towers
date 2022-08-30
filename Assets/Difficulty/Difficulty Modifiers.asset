@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startEnemiesCount: 10
   enemiesCountAddModifier: 5
-  enemiesCountIntencity: 2
+  enemiesCountIntencity: 1
   startSpawnTime: 1.8
-  spawnTimeModifier: 0.7
-  spawnTimeIntencity: 3
-  startHealth: 20
-  healthModifier: 1.2
-  healthIntencity: 4
+  spawnTimeModifier: 0.8
+  spawnTimeIntencity: 2
+  startHealth: 30
+  healthModifier: 1.15
+  healthIntencity: 1
   startCoinsDrop: 1
   coinsAddModifier: 1
-  coinsModifierIntencity: 2
+  coinsModifierIntencity: 1

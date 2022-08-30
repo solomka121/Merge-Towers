@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619a2fc9b2f2c5f43ae87879b13120a9, type: 3}
   m_Name: TurretsLevel
   m_EditorClassIdentifier: 
-  maxLevel: 5
+  maxLevel: 10
   buildings:
   - {fileID: 8233484851888101292, guid: d4a754291e2e4d742ae45f157b8a4871, type: 3}
-  - {fileID: 8233484851888101292, guid: 171dddf8c2ecd384daa1291a376a5bd4, type: 3}
-  - {fileID: 8233484851888101292, guid: 1470b0269af966e428bf87bcb5b96184, type: 3}
-  - {fileID: 8233484851888101292, guid: b14e9c862b5095a4f8311c0eab8d8716, type: 3}
-  - {fileID: 8233484851888101292, guid: 9761b0faf37afe749a5ab446a1da9f79, type: 3}
+  - {fileID: 8233484851888101292, guid: f3af4c9c280169445b35d4836527fa7e, type: 3}
+  - {fileID: 8233484851888101292, guid: 0354e05fd8fa3044d8946f3e77e149fc, type: 3}
+  - {fileID: 8233484851888101292, guid: eaa0a8769c4811d40972bafec6755e83, type: 3}
+  - {fileID: 8233484851888101292, guid: dc663fcbccd93a84ca6637ac8063b380, type: 3}
+  - {fileID: 8233484851888101292, guid: 4408e3e8d57505e4e9b030202342ff70, type: 3}
+  - {fileID: 8233484851888101292, guid: dbb2d548caa17ef4ba4a7484585ed6f3, type: 3}
+  - {fileID: 8233484851888101292, guid: 55270533ff017cc498baff2706180d76, type: 3}
+  - {fileID: 8233484851888101292, guid: 5aaceaa90cef0504a93604e84d0119e8, type: 3}
+  - {fileID: 8233484851888101292, guid: 794347659e45c584094b417f745c8b9c, type: 3}

@@ -346,9 +346,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <level>k__BackingField: 1
   <damage>k__BackingField: 5
-  <bulletSpeed>k__BackingField: 15
+  <bulletSpeed>k__BackingField: 12
   <fireRate>k__BackingField: 1
-  <range>k__BackingField: 14
+  <range>k__BackingField: 12
   <mainColor>k__BackingField: {r: 0.08627451, g: 0.627451, b: 0.52156866, a: 1}
   _turretTopPart: {fileID: 5679429557080632542}
   _barrel:
@@ -426,7 +426,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8811881717442535853}
-  m_Mesh: {fileID: -5467775438749932361, guid: 160e93d318e98a244b787f0553896553, type: 3}
+  m_Mesh: {fileID: -2064742770761366613, guid: e84b0ada85fbb6b489e08a9479d8660d, type: 3}
 --- !u!23 &1652564086298905978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 685338916900197185, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.028
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 685338916900197185, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -558,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 685338916900197185, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.632
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 685338916900197185, guid: f1ce4b19488c24e48a3b2d236b890e5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

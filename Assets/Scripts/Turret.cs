@@ -24,8 +24,8 @@ public class Turret : MonoBehaviour
     private void Awake()
     {
         _shootCooldown = 1 / fireRate;
-        damage *= level;
-        fireRate *= level;
+/*        damage *= level;
+        fireRate *= level;*/
     }
 
     public void SetPool(TurretBulletsPool pool) => _bulletsPool = pool;

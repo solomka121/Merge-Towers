@@ -104,7 +104,7 @@ public class BuildingManager : MonoBehaviour
         for (int i = 0; i < _buildings.Count; i++)
         {
             Building buildingOnGrid = _buildings[i];
-            if (buildingOnGrid.turret.level == neededLevel)
+            if (buildingOnGrid.turret.level == neededLevel && neededLevel < _turretLevels.maxLevel)
             {
                 _buildings[i].currentCell.SetMergeble(true);
             }
@@ -258,7 +258,9 @@ public class BuildingManager : MonoBehaviour
                 {
                     Building targetedBuilding = _grid[targetCell.x, targetCell.y];
                     int neededLevel = _selectedBuilding.turret.level;
-                    if (targetedBuilding.turret.level == neededLevel) // if the targeted turret is the same level ( Merge )
+
+                        // if the targeted turret is the same level ( Merge ) 
+                    if (targetedBuilding.turret.level == neededLevel && neededLevel < _turretLevels.maxLevel) 
                     {
                         DeleteBuildingOnGrid(oldCell);
                         Destroy(_selectedBuilding.gameObject);

@@ -21,6 +21,6 @@ MonoBehaviour:
   startHealth: 30
   healthModifier: 1.15
   healthIntencity: 1
-  startCoinsDrop: 1
+  startCoinsDrop: 20
   coinsAddModifier: 1
   coinsModifierIntencity: 1
